@@ -1,11 +1,8 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { Document, Types } from 'mongoose';
+import { Document } from 'mongoose';
 
 @Schema({ collection: 'Users', strict: 'throw', minimize: false })
 export class User extends Document {
-  @Prop({ require: true })
-  _id: Types.ObjectId;
-
   @Prop({ required: true, unique: true })
   id: string;
 
