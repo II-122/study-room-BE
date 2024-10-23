@@ -40,6 +40,7 @@ export class PlannersService {
       if (plannerDto.repeatEndDate === undefined) {
         // 시간이 겹치는 날짜 탐색
         const overlappingPlanners = await this.plannerModel.find({
+          userId: new Types.ObjectId(userId),
           date: plannerDto.date,
           $or: [
             {
@@ -107,6 +108,7 @@ export class PlannersService {
 
         for (let i: number = 0; i < dateArray.length; i++) {
           const overlappingPlanners = await this.plannerModel.find({
+            userId: new Types.ObjectId(userId),
             date: dateArray[i],
             $or: [
               {
@@ -249,6 +251,7 @@ export class PlannersService {
     if (isHaveParent === false && isHaveRepetition === false) {
       // 시간이 겹치는 할 일 탐색
       const overlappingPlanners = await this.plannerModel.find({
+        userId: new Types.ObjectId(userId),
         date: plannerDto.date,
         $or: [
           {
@@ -318,6 +321,7 @@ export class PlannersService {
 
       for (let i: number = 0; i < dateArray.length; i++) {
         const overlappingPlanners = await this.plannerModel.find({
+          userId: new Types.ObjectId(userId),
           date: dateArray[i],
           $or: [
             {
